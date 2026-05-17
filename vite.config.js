@@ -1,4 +1,7 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
 export default defineConfig({
   plugins: [react()],
-  base: './', // Ye line browser ko batati hai ke files kahan se uthani hain
+  base: '/',
 })
