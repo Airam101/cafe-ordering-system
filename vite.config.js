@@ -1,4 +1,4 @@
 export default defineConfig({
   plugins: [react()],
-  base: './',
+  base: './', // Ye line browser ko batati hai ke files kahan se uthani hain
 })
