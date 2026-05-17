@@ -1,0 +1,221 @@
+/* ── GLOBAL DESIGN SYSTEM FOR BREW & CO. ── */
+
+:root {
+  /* Color Palette (HSL curated for premium coffee shop vibe) */
+  --bg-espresso: hsl(30, 25%, 5%);        /* #0f0905 - Deep rich espresso */
+  --bg-roasted: hsl(28, 20%, 8%);         /* #16100c - Medium roast roasted bean */
+  --bg-card: rgba(30, 20, 15, 0.45);      /* Rich glassmorphic mocha overlay */
+  
+  --accent-brew: hsl(27, 47%, 60%);       /* #C8956C - Warm copper brew bronze */
+  --accent-brew-hover: hsl(27, 50%, 68%); /* Brighter brew highlight */
+  --accent-brew-glow: rgba(200, 149, 108, 0.25);
+  
+  --text-cream: #F5ECD7;                  /* Smooth milky froth white */
+  --text-cappuccino: #D0B890;             /* Warm creamy beige */
+  --text-muted: #8A7060;                  /* Soft earthy cocoa */
+  
+  /* Status Colors */
+  --color-green: #6B8E6B;                 /* Sage matcha green */
+  --color-green-light: #C8E6C9;
+  --color-blue: #4A7EA5;                  /* Cold brew blue */
+  --color-purple: #8B6E9E;                /* Lavender berry modifier purple */
+  --color-red: #A84E32;                   /* Hot cinnamon red */
+  --color-red-glow: rgba(168, 78, 50, 0.4);
+
+  /* Fonts */
+  --font-serif: 'Fraunces', 'Georgia', serif;
+  --font-sans: 'Outfit', 'Inter', sans-serif;
+  
+  /* Borders & Shadows */
+  --border-glass: 1px solid rgba(200, 149, 108, 0.15);
+  --border-light: 1px solid rgba(255, 255, 255, 0.08);
+  --shadow-premium: 0 20px 50px rgba(0, 0, 0, 0.6);
+  --shadow-glow: 0 0 20px rgba(200, 149, 108, 0.15);
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 24px;
+}
+
+/* Base resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-brew) rgba(0, 0, 0, 0.2);
+}
+
+body {
+  background-color: var(--bg-espresso);
+  background-image: 
+    radial-gradient(ellipse at top left, rgba(200, 149, 108, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, rgba(107, 142, 107, 0.05) 0%, transparent 60%);
+  color: var(--text-cream);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-brew);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-brew-hover);
+}
+
+/* Typography styles */
+h1, h2, h3, h4, .serif-font {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+/* Animations */
+@keyframes breathing {
+  0% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.05); opacity: 1; filter: drop-shadow(0 0 8px var(--accent-brew)); }
+  100% { transform: scale(1); opacity: 0.9; }
+}
+
+@keyframes kds-alert-shake {
+  0%, 100% { transform: translate(0, 0); box-shadow: 0 0 10px var(--color-red-glow); }
+  25% { transform: translate(-2px, 0); }
+  50% { box-shadow: 0 0 25px var(--color-red); }
+  75% { transform: translate(2px, 0); }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 8px var(--color-red-glow); border-color: rgba(168, 78, 50, 0.4); }
+  50% { box-shadow: 0 0 20px var(--color-red); border-color: rgba(168, 78, 50, 1); }
+}
+
+@keyframes status-fade {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.brewing-pulse {
+  animation: breathing 3s ease-in-out infinite;
+}
+
+.kds-alert-glow {
+  animation: pulse-red 1.5s ease-in-out infinite, kds-alert-shake 4s ease-in-out infinite;
+}
+
+.status-active-pulse {
+  animation: status-fade 2s ease-in-out infinite;
+}
+
+.float-hover:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Premium UI elements */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: var(--border-glass);
+  box-shadow: var(--shadow-premium);
+}
+
+.btn-primary {
+  background: var(--accent-brew);
+  color: var(--bg-espresso);
+  border: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(200, 149, 108, 0.2);
+}
+
+.btn-primary:hover {
+  background: var(--accent-brew-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 149, 108, 0.35);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-cappuccino);
+  border: var(--border-light);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-cream);
+  border-color: var(--accent-brew);
+}
+
+/* Utility grid layouts */
+.container-max {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title-badge {
+  display: inline-block;
+  background: rgba(200,149,108,0.15);
+  border: 1px solid rgba(200,149,108,0.3);
+  border-radius: 4px;
+  padding: 4px 14px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent-brew);
+}
+
+.badge-new {
+  background: var(--color-blue);
+  color: #fff;
+}
+.badge-progress {
+  background: var(--accent-brew);
+  color: var(--bg-espresso);
+}
+.badge-ready {
+  background: var(--color-green);
+  color: #fff;
+}
+.badge-collected {
+  background: var(--text-muted);
+  color: #fff;
+}
+
+/* Modifiers tags styles */
+.modifier-tag {
+  font-size: 11px;
+  background: rgba(200, 149, 108, 0.12);
+  border: 1px solid rgba(200, 149, 108, 0.25);
+  color: var(--text-cappuccino);
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-family: var(--font-sans);
+}
